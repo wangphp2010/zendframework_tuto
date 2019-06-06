@@ -1,0 +1,77 @@
+
+https://docs.zendframework.com/tutorials/getting-started/forms-and-actions/ 目前
+
+
+
+https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ 教程网站
+
+
+
+
+	运行服务器 $ php -S 0.0.0.0:8080 -t public public/index.php
+ 
+	修改	
+			config/modules.config.php
+			#告诉它要加载module/Album/src/Module.php  所以 在return里 增加这一行  'Album',
+
+			
+			
+	创建 module/Album/src/Module.php 
+		<?php
+			# The ModuleManager will call getConfig() automatically for us.
+
+
+			namespace Album;
+
+			use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
+			class Module implements ConfigProviderInterface
+			{
+				public function getConfig()
+				{
+					return include __DIR__ . '/../config/module.config.php';
+				}
+			}
+		修改composer.json 
+			"autoload": {
+				"psr-4": {
+					"Application\\": "module/Application/src/",
+					"Album\\": "module/Album/src/" #增加这一行 以后在namespace 和use 里 写 Album开头的就代表加载的是module/Album/src/
+				}
+			},
+			修改完 composer.json  
+				要运行指令 $ composer dump-autoload 来更新自动加载规则
+		创建	
+			module/Album/config/module.config.php 因为 module/Album/src/Module.php 中getConfig() 方法会加载它
+			
+		创建 module/Album/src/Controller/AlbumController.php 	
+
+
+		数据库 
+				建立文件data/schema.sql 在里面写入 
+					CREATE TABLE album (id INTEGER PRIMARY KEY AUTOINCREMENT, artist varchar(100) NOT NULL, title varchar(100) NOT NULL);
+					INSERT INTO album (artist, title) VALUES ('The Military Wives', 'In My Dreams');
+					INSERT INTO album (artist, title) VALUES ('Adele', '21');
+					INSERT INTO album (artist, title) VALUES ('Bruce Springsteen', 'Wrecking Ball (Deluxe)');
+					INSERT INTO album (artist, title) VALUES ('Lana Del Rey', 'Born To Die');
+					INSERT INTO album (artist, title) VALUES ('Gotye', 'Making Mirrors');
+				
+				插入数据库		
+					先安装sqlite3  
+						您需要下载 sqlite-tools-win32-*.zip 和 sqlite-dll-win32-*.zip 压缩文件。
+						创建文件夹 C:\sqlite，并在此文件夹下解压上面两个压缩文件，将得到 sqlite3.def、sqlite3.dll 和 sqlite3.exe 文件。
+						添加 C:\sqlite 到 PATH 环境变量
+
+
+					再运行sqlite3服务 $ sqlite3 
+					
+					$ sqlite data/zftutorial.db < data/schema.sql	
+					
+		创建 module/Album/src/Model/Album.php
+		创建 module/Album/src/Model/AlbumTable.php
+		
+		修改 config/autoload/global.php 
+		
+
+	
+			

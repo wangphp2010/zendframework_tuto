@@ -1,0 +1,5 @@
+	开启开发模式 $composer development-enable
+
+	查看模式 $ composer development-status
+	 
+	关闭开发模式  $ composer development-disable

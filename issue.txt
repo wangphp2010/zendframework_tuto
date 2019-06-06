@@ -1,0 +1,6 @@
+	1. PHP 7.3 compatibility issues: Warning: "continue" targeting switch is equivalent to "break".
+	    
+		解决方法 composer require  zendframework/zend-stdlib
+		
+	2. Connect Error: could not find driver 
+		因为教程用的是sqlite数据库 所以要在php.ini 里加载 extension=pdo_sqlite.dll
