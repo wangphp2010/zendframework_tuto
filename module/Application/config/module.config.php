@@ -20,7 +20,9 @@ use Album\Controller\AlbumController;
                     'route'    => '/',
                     'defaults' => [
                       //  'controller' => Controller\IndexController::class, # 调用  module/application/src/  =namespace Application  module/application/src/controller/indexController.php   中的 类 indexController 
-                      'controller' => AlbumController::class , 
+                     // 'controller' => AlbumController::class , 
+                     'controller' => Controller\IndexController::class, // <-- change back here
+
                         'action'     => 'index',
                     ],
                 ],
@@ -60,4 +62,36 @@ use Album\Controller\AlbumController;
             __DIR__ . '/../view',
         ],
     ],
+
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'Album',
+                'route' => 'album',
+                'pages' => [
+                    [
+                        'label'  => 'Add',
+                        'route'  => 'album',
+                        'action' => 'add',
+                    ],
+                    [
+                        'label'  => 'Edit',
+                        'route'  => 'album',
+                        'action' => 'edit',
+                    ],
+                    [
+                        'label'  => 'Delete',
+                        'route'  => 'album',
+                        'action' => 'delete',
+                    ],
+                ],
+            ],
+        ],
+    ],
+
+
 ];

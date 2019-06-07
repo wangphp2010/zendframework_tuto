@@ -1,13 +1,8 @@
-<?php
-
-
+<?php // in module/Album/view/album/album/index.phtml:
 $title = 'My albums';
-$this->headTitle($title); #<title> $title </title>
-
+$this->headTitle($title);
 ?>
-
-
-<h1><?= $this->escapeHtml($title) ?></h1> <!--escapeHtml() 去除html元字符 -->
+<h1><?= $this->escapeHtml($title); ?></h1>
 <p>
     <a href="<?= $this->url('album', ['action' => 'add']) ?>">Add new album</a>
 </p>
@@ -18,7 +13,7 @@ $this->headTitle($title); #<title> $title </title>
         <th>Artist</th>
         <th>&nbsp;</th>
     </tr>
-    <?php foreach ($albums as $album) : ?>
+    <?php foreach ($this->paginator as $album) : // <-- change here! ?>
         <tr>
             <td><?= $this->escapeHtml($album->title) ?></td>
             <td><?= $this->escapeHtml($album->artist) ?></td>
@@ -29,3 +24,13 @@ $this->headTitle($title); #<title> $title </title>
         </tr>
     <?php endforeach; ?>
 </table>
+<?= $this->paginationControl(
+    // The paginator object:
+    $this->paginator,
+    // The scrolling style:
+    'sliding',
+    // The partial to use to render the control:
+    'partial/paginator',
+    // The route to link to when a user clicks a control link:
+    ['route' => 'album' , 'pagename'=>$pagename ]
+) ?>

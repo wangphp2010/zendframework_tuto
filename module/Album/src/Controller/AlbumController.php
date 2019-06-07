@@ -23,13 +23,21 @@ class AlbumController extends AbstractActionController
 
     public function indexAction()
     {
-        $albums = $this->table->fetchAll();
+        // Grab the paginator from the AlbumTable:
+        $paginator = $this->table->fetchAll(true);
+        $pagename ='pg' ;
+        // Set the current page to what has been passed in query string,
+        // or to 1 if none is set, or the page is invalid:
+        $page = (int)$this->params()->fromQuery( $pagename , 1);
+        $page = ($page < 1) ? 1 : $page;
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setPageRange(5);
+        // Set the number of items per page to 10:
+        $paginator->setItemCountPerPage(10);
 
-
-        return new ViewModel([
-            'albums' => $albums,
-        ]);
+        return new ViewModel(['paginator' => $paginator , "pagename" => $pagename  ] );
     }
+
 
     public function addAction()
     {
@@ -104,27 +112,27 @@ class AlbumController extends AbstractActionController
         if (!$id) {
             return $this->redirect()->toRoute('album');
         }
-       
+
         $request = $this->getRequest();
 
-      /*   echo  $this->params()->fromQuery('del') . ' 1 '; # Get 的数据 或这这样写 $request->getQuery('del'); 因为没有 getGET()方法 而是getQuery()
+        /*   echo  $this->params()->fromQuery('del') . ' 1 '; # Get 的数据 或这这样写 $request->getQuery('del'); 因为没有 getGET()方法 而是getQuery()
         echo $this->params()->fromPost('del'). ' 2 ';# Post 的数据 
          */
 
         if ($request->isPost()) {
-             $del = $request->getPost('del', 'No'); # 获得del值 如果空 则=no
-  
+            $del = $request->getPost('del', 'No'); # 获得del值 如果空 则=no
+
 
             if ($del == 'Yes') {
-                 $id = (int)$request->getPost('id');
-               // $this->table->deleteAlbum($id);
-             }
+                $id = (int)$request->getPost('id');
+                // $this->table->deleteAlbum($id);
+            }
 
             // Redirect to list of albums
-             return $this->redirect()->toRoute('album');
+            return $this->redirect()->toRoute('album');
         }
-        
- 
+
+
         #等同于   return new ViewModel([  'id'    => $id,  'albums' => $albums,  ]);
         return [
             'id'    => $id,

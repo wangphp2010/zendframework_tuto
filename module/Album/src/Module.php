@@ -17,6 +17,9 @@ class Module implements ConfigProviderInterface
         return include __DIR__ . '/../config/module.config.php';
     }
 
+    /**
+     * 通过这个方法 调用AlbumController.php这个控制器
+     */
     public function getControllerConfig()
     {
         return [

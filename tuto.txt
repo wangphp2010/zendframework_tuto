@@ -1,5 +1,5 @@
 
-https://docs.zendframework.com/tutorials/getting-started/forms-and-actions/ 目前
+https://docs.zendframework.com/tutorials/getting-started/conclusion/ 目前
 
 
 
@@ -7,7 +7,8 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 
 
 
-
+	
+	
 	运行服务器 $ php -S 0.0.0.0:8080 -t public public/index.php
  
 	修改	
@@ -76,5 +77,35 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 		
 		创建 module/Album/src/Form/AlbumForm.php
 
+
+
+
+	https://docs.zendframework.com/tutorials/unit-testing/
+	安装  zend-test (测试工具)
+		安装完成后   测试指令 $ "vendor/bin/phpunit" 
+		
+		建立测试文件夹 module/Album/test/Controller/
+		
+		修改文件composer.json 增加 
+			"autoload-dev": {
+				"psr-4": {
+					"ApplicationTest\\": "module/Application/test/",
+					"AlbumTest\\": "module/Album/test/" <------增加这一行 
+			修改完 要运行一下指令 $ composer dump-autoload 	让它更新一下	
+			
+		编辑phpunit.xml.dist 
+			增加
+				 
+				<testsuite name="Album">
+					<directory>./module/Album/test</directory>
+				</testsuite>
+		 
+		 测试自己的module album 指令为 $ "vendor/bin/phpunit" --testsuite Album
+		 
+	配置Setting Up zend-navigation 导航菜单
+		先安装 $ composer require zendframework/zend-navigation
+		
+	安装分页	
+		$ composer require zendframework/zend-paginator
 	
 			

@@ -12,13 +12,31 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
 
-    ## 删除这句 
-    /*
-    'controllers' => [
-        'factories' => [
-            Controller\AlbumController::class => InvokableFactory::class, #albumcontroller.php
-        ],
-    ],
+    /**
+     *  
+     * 在module/album/src/model.php 加了    
+     *  
+           public function getControllerConfig()
+            {
+                return [
+                    'factories' => [
+                        Controller\AlbumController::class => function($container) {
+                            return new Controller\AlbumController(
+                                $container->get(Model\AlbumTable::class)
+                            );
+                        },
+                    ],
+                ];
+            }
+
+
+          则这句可以不用写 ,
+          这两段 相同作用  
+            'controllers' => [
+                'factories' => [
+                    Controller\AlbumController::class => InvokableFactory::class, #albumcontroller.php
+                ],
+            ],
     */
 
 
@@ -35,7 +53,7 @@ return [
                         'id'     => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => Controller\AlbumController::class,
+                        'controller' => Controller\AlbumController::class, # 控制器名字 AlbumController.php
                         'action'     => 'index', #默认route
                     ],
                 ],

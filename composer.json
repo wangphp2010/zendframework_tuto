@@ -18,21 +18,20 @@
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zend-db": "^2.8.1",
         "zendframework/zend-mvc-form": "^1.0",
-        "zendframework/zend-stdlib": "^3.2"
+        "zendframework/zend-stdlib": "^3.2",
+        "zendframework/zend-navigation": "^2.9",
+        "zendframework/zend-paginator": "^2.8"
     },
     "autoload": {
         "psr-4": {
-               "Application\\": "module/Application/src/",
-
+            "Application\\": "module/Application/src/",
             "Album\\": "module/Album/src/"
-
-            
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ApplicationTest\\": "module/Application/test/"
- 
+            "ApplicationTest\\": "module/Application/test/",
+            "AlbumTest\\": "module/Album/test/"
         }
     },
     "extra": [],
@@ -49,6 +48,7 @@
         "test": "phpunit"
     },
     "require-dev": {
-        "zendframework/zend-developer-tools": "^1.1.0"
+        "zendframework/zend-developer-tools": "^1.1.0",
+        "zendframework/zend-test": "^3.2"
     }
 }
