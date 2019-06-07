@@ -1,0 +1,6 @@
+	https://blog.csdn.net/liuhe688/article/details/6712782 
+	http://www.runoob.com/sqlite/sqlite-php.html
+	
+	SQLite Expert SQLite管理工具类似phpadmin
+	sqlite3_analyzer test.db 分析数据库使用状态：
+

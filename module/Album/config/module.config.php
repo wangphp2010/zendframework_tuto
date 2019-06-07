@@ -7,11 +7,11 @@ use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 
- 
+
 
 
 return [
-    
+
     ## 删除这句 
     /*
     'controllers' => [
@@ -40,7 +40,11 @@ return [
                     ],
                 ],
             ],
+
+           
         ],
+
+
     ],
 
     'view_manager' => [

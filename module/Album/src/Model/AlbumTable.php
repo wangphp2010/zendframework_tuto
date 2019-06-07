@@ -5,6 +5,8 @@ namespace Album\Model;
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
 
+
+# 管理数据库处理 
 class AlbumTable
 {
     private $tableGateway;
@@ -36,6 +38,7 @@ class AlbumTable
 
     public function saveAlbum(Album $album)
     {
+        #如过有id 则更新数据库 否则 添加新数据
         $data = [
             'artist' => $album->artist,
             'title'  => $album->title,

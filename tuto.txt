@@ -61,17 +61,20 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 						您需要下载 sqlite-tools-win32-*.zip 和 sqlite-dll-win32-*.zip 压缩文件。
 						创建文件夹 C:\sqlite，并在此文件夹下解压上面两个压缩文件，将得到 sqlite3.def、sqlite3.dll 和 sqlite3.exe 文件。
 						添加 C:\sqlite 到 PATH 环境变量
+						在php.ini 加载sqlite扩展  extension=sqlite3 extension=pdo_sqlite
 
 
 					再运行sqlite3服务 $ sqlite3 
 					
-					$ sqlite data/zftutorial.db < data/schema.sql	
+					$ sqlite data/zftutorial.db < data/schema.sql	 #把数据插入数据库文件 data/zftutorial.db
 					
 		创建 module/Album/src/Model/Album.php
 		创建 module/Album/src/Model/AlbumTable.php
 		
 		修改 config/autoload/global.php 
 		
+		
+		创建 module/Album/src/Form/AlbumForm.php
 
 	
 			

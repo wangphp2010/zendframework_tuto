@@ -6,10 +6,11 @@
  */
 
 namespace Application ;
- use Zend\Router\Http\Literal;
+use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
- 
+use Album\Controller\AlbumController;
+
  return [
     'router' => [
         'routes' => [
@@ -18,8 +19,8 @@ use Zend\ServiceManager\Factory\InvokableFactory;
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        
+                      //  'controller' => Controller\IndexController::class, # 调用  module/application/src/  =namespace Application  module/application/src/controller/indexController.php   中的 类 indexController 
+                      'controller' => AlbumController::class , 
                         'action'     => 'index',
                     ],
                 ],
