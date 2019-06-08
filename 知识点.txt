@@ -3,9 +3,20 @@
   module/Album/view/album/album/index.phtml 的意思 module/Album/view/{module name}/{controller name}/{action name}
 
 
+	
+	
+	module.config.php 配置 路由 控制器 视图
+	
+	
 	设置数据库
 		config/autoload/global.php
 			//  sqlite 'dsn'    => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
 			// mysql  'dsn'    => 'mysql:dbname=zftutorial;host=localhost;charset=utf8',
 			
-	每次修改完compser.json 要运行一下指令 $ composer dump-autoload 	让它更新一下	
+	每次修改完compser.json 要运行一下指令 $ composer dump-autoload 	让它更新一下
+
+
+
+
+	
+			

@@ -90,6 +90,10 @@ use Album\Controller\AlbumController;
                     ],
                 ],
             ],
+            [
+                'label' => 'Blog',
+                'route' => 'blog',
+            ]
         ],
     ],
 

@@ -1,0 +1,72 @@
+<!-- Filename: module/Blog/view/blog/list/index.phtml -->
+<h1>Blog\ListController::indexAction()</h1>
+
+<style>
+pre {
+white-space: pre-wrap;       /* css-3 */
+white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+white-space: -pre-wrap;      /* Opera 4-6 */
+white-space: -o-pre-wrap;    /* Opera 7 */
+word-wrap: break-word;       /* Internet Explorer 5.5+ */
+word-break:break-all;
+overflow:hidden;
+}
+</style>
+
+
+<pre>
+
+
+
+<div class="container">
+<?php 
+$a = '新的module怎么自动载入
+	{
+		1 :
+			composer.json里
+				"autoload": {
+				   "psr-4": {
+						"Application\\": "module/Application/src/",
+						"Album\\": "module/Album/src/",
+						"Blog\\": "module/Blog/src/" <------ 添加
+				   }
+				}
+			$ composer dump-autoload	
+		2 : 
+			创建文件module/Blog/src/Module.php
+					 
+						namespace Blog;
+
+						class Module
+						{
+							return include __DIR__ . "/../config/module.config.php";
+						}
+						
+		3 :
+			config/modules.config.php 文件里添加
+				return [
+					/* ... */
+					
+					"Blog", <------ 添加
+				];
+		
+		4 :
+			创建 module/Blog/config/module.config.php
+			定义routes 和 controller 
+			
+		5 : 
+			创建 module/Blog/src/Controller/ListController.php
+			
+			
+			
+			
+		
+	}' ;
+            
+    
+    echo nl2br($a) ;
+    ?>
+
+
+</div>
+</pre>
