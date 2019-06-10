@@ -40,31 +40,35 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 				}
 			}
 ~~~			
-		修改composer.json 
+
+### 修改composer.json 
+~~~php
 			"autoload": {
 				"psr-4": {
 					"Application\\": "module/Application/src/",
 					"Album\\": "module/Album/src/" #增加这一行 以后在namespace 和use 里 写 Album开头的就代表加载的是module/Album/src/
 				}
 			},
-			修改完 composer.json  
+~~~			
+
+#### 修改完 composer.json  
 				要运行指令 $ composer dump-autoload 来更新自动加载规则
-		创建	
+#### 创建	
 			module/Album/config/module.config.php 因为 module/Album/src/Module.php 中getConfig() 方法会加载它
 			
-		创建 module/Album/src/Controller/AlbumController.php 	
+#### 创建 module/Album/src/Controller/AlbumController.php 	
 
 
-		数据库 
-				建立文件data/schema.sql 在里面写入 
+#### 数据库 
+
+##### 建立文件data/schema.sql 在里面写入 
 					CREATE TABLE album (id INTEGER PRIMARY KEY AUTOINCREMENT, artist varchar(100) NOT NULL, title varchar(100) NOT NULL);
 					INSERT INTO album (artist, title) VALUES ('The Military Wives', 'In My Dreams');
 					INSERT INTO album (artist, title) VALUES ('Adele', '21');
 					INSERT INTO album (artist, title) VALUES ('Bruce Springsteen', 'Wrecking Ball (Deluxe)');
 					INSERT INTO album (artist, title) VALUES ('Lana Del Rey', 'Born To Die');
 					INSERT INTO album (artist, title) VALUES ('Gotye', 'Making Mirrors');
-				
-				插入数据库		
+##### 插入数据库		
 					先安装sqlite3  
 						您需要下载 sqlite-tools-win32-*.zip 和 sqlite-dll-win32-*.zip 压缩文件。
 						创建文件夹 C:\sqlite，并在此文件夹下解压上面两个压缩文件，将得到 sqlite3.def、sqlite3.dll 和 sqlite3.exe 文件。
@@ -88,7 +92,9 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 
 
 	https://docs.zendframework.com/tutorials/unit-testing/
-	安装  zend-test (测试工具)
+安装  zend-test (测试工具)
+========================
+
 		安装完成后   测试指令 $ "vendor/bin/phpunit" 
 		
 		建立测试文件夹 module/Album/test/Controller/
