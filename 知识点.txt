@@ -4,7 +4,7 @@
 
 
 	
-	
+ 	
 	module.config.php 配置 路由 控制器 视图
 	
 	

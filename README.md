@@ -1,5 +1,5 @@
 
-https://docs.zendframework.com/tutorials/in-depth-guide/first-module/ 目前
+https://docs.zendframework.com/tutorials/in-depth-guide/models-and-servicemanager/ 目前
 
 
 
@@ -8,16 +8,22 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 
 
 	
-	
-	运行服务器 $ php -S 0.0.0.0:8080 -t public public/index.php
- 
-	修改	
+运行服务器
+==========
+
+~~~bash		
+	 $ php -S 0.0.0.0:8080 -t public public/index.php
+~~~~ 
+
+### 修改	
 			config/modules.config.php
-			#告诉它要加载module/Album/src/Module.php  所以 在return里 增加这一行  'Album',
+			//告诉它要加载module/Album/src/Module.php  所以 在return里 增加这一行  'Album',
 
 			
 			
-	创建 module/Album/src/Module.php 
+### 创建 
+	module/Album/src/Module.php 
+~~~php	
 		<?php
 			# The ModuleManager will call getConfig() automatically for us.
 
@@ -33,6 +39,7 @@ https://docs.zendframework.com/tutorials/getting-started/skeleton-application/ �
 					return include __DIR__ . '/../config/module.config.php';
 				}
 			}
+~~~			
 		修改composer.json 
 			"autoload": {
 				"psr-4": {
